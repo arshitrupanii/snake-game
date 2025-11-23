@@ -1,4 +1,6 @@
 const board = document.querySelector(".board")
+const body = document.querySelector("body")
+
 
 const blockWidth = 80
 const blockHeight = 80
@@ -11,21 +13,13 @@ let blocks = []
 let snake = [
     {
         x: 4,
-        y: 8
-    },
-    // {
-    //     x: 1,
-    //     y: 9
-    // },
-    // {
-    //     x: 1,
-    //     y: 10
-    // }
+        y: 2
+    }
 ]
 let direction = 'right';
 
 
-// this loop add block in board and blocks array
+// add block in board and blocks array
 for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
         const block = document.createElement("div");
@@ -41,7 +35,7 @@ function clearBoard() {
     Object.values(blocks).forEach(b => b.classList.remove("fill"))
 }
 
-// render snake according to blocks
+// render snake according to blocks array
 function snakeRender() {
     clearBoard()
 
@@ -54,6 +48,14 @@ function snakeRender() {
     })
 }
 
+function FoodRandomDir(){
+    let foodBlocks = blocks.filter((e) => e !== e)
+    console.log(foodBlocks);
+
+}
+
+FoodRandomDir();
+
 
 setInterval(() => {
     let head = null;
@@ -65,7 +67,7 @@ setInterval(() => {
         head = { x: snake[0].x, y: snake[0].y + 1 }
 
     }
-    else if (direction == 'top') {
+    else if (direction == 'up') {
         head = { x: snake[0].x - 1, y: snake[0].y }
 
     }
@@ -81,4 +83,12 @@ setInterval(() => {
 
     snakeRender();
 
-}, 1000);
+}, 400);
+
+
+body.addEventListener("keydown", (e) => {
+    if(e.key == 'ArrowLeft') direction = 'left'
+    else if(e.key == 'ArrowUp') direction = 'up'
+    else if(e.key == 'ArrowDown') direction = 'down'
+    else if(e.key == 'ArrowRight') direction = 'right'
+})
