@@ -24,7 +24,7 @@ for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
         const block = document.createElement("div");
         block.classList.add("block")
-        block.innerText = `${row}-${col}`
+        // block.innerText = `${row}-${col}`
         board.appendChild(block);
         blocks[`${row}-${col}`] = block
     }
@@ -47,14 +47,6 @@ function snakeRender() {
         }
     })
 }
-
-function FoodRandomDir(){
-    let foodBlocks = blocks.filter((e) => e !== e)
-    console.log(foodBlocks);
-
-}
-
-FoodRandomDir();
 
 
 setInterval(() => {
@@ -87,8 +79,8 @@ setInterval(() => {
 
 
 body.addEventListener("keydown", (e) => {
-    if(e.key == 'ArrowLeft') direction = 'left'
-    else if(e.key == 'ArrowUp') direction = 'up'
-    else if(e.key == 'ArrowDown') direction = 'down'
-    else if(e.key == 'ArrowRight') direction = 'right'
+    if(e.key == 'ArrowLeft' || e.key == 'a') direction = 'left'
+    else if(e.key == 'ArrowUp' || e.key == 'w') direction = 'up'
+    else if(e.key == 'ArrowDown' || e.key == 's') direction = 'down'
+    else if(e.key == 'ArrowRight' || e.key == 'd') direction = 'right'
 })
