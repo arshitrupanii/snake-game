@@ -52,7 +52,7 @@ function clearBoard() {
 
 
 // End game function
-function endGame(text) {
+function endGame() {
     clearInterval(SnakeInterval)
     clearInterval(TimeInterval)
 
@@ -60,7 +60,7 @@ function endGame(text) {
         localStorage.setItem("SnakeGameHighScore", Score)
     }
 
-    alert(text)
+    alert('Game over')
     location.reload()
 }
 
@@ -83,11 +83,11 @@ function snakeRender() {
     // check that snake it not bite itself 
     // if bite snake itself then game over
     for (let i = 1; i < snake.length; i++) {
-        if (snake[i].x == head.x && snake[i].y == head.y) endGame('Snake bite itself')
+        if (snake[i].x == head.x && snake[i].y == head.y) endGame()
     }
 
     // check if snake touch border of board and clear time out
-    if (head.x < 0 || head.x >= rows || head.y >= cols || head.y < 0) endGame('Game over')
+    if (head.x < 0 || head.x >= rows || head.y >= cols || head.y < 0) endGame()
 
 
     // check food location and snake location match
